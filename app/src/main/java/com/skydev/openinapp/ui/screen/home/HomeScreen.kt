@@ -19,20 +19,31 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.skydev.openinapp.R
 import com.skydev.openinapp.ui.theme.greyMid
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.fillMaxSize()) {
+fun HomeScreen(
+    viewModel: HomeViewModel = koinViewModel()
+) {
+
+    LaunchedEffect(Unit) {
+        viewModel.initGreeting()
+    }
+
+    val greeting by viewModel.greeting.collectAsStateWithLifecycle()
+
+    Column(modifier = Modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -74,7 +85,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .background(greyMid)
                 .verticalScroll(rememberScrollState())
         ) {
-            Text(text = "Context")
+            Text(text = greeting, style = MaterialTheme.typography.labelLarge)
             Text(text = "Context")
             Text(text = "Context")
             Text(text = "Context")
