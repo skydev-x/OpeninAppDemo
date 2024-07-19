@@ -29,6 +29,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.skydev.openinapp.R
+import com.skydev.openinapp.ui.screen.home.component.GreetingHeader
+import com.skydev.openinapp.ui.screen.home.component.OverviewGraph
 import com.skydev.openinapp.ui.theme.greyMid
 import org.koin.androidx.compose.koinViewModel
 
@@ -85,39 +87,8 @@ fun HomeScreen(
                 .background(greyMid)
                 .verticalScroll(rememberScrollState())
         ) {
-            Text(text = greeting, style = MaterialTheme.typography.labelLarge)
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
-            Text(text = "Context")
+            GreetingHeader(greeting = greeting)
+            OverviewGraph()
         }
     }
 }

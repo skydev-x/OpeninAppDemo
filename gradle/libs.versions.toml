@@ -21,6 +21,7 @@ lifecycleRuntimeKtxVersion = "2.8.3"
 lifecycleVersion = "2.8.3"
 lottieCompose = "6.4.0"
 navigationCompose = "2.8.0-beta05"
+androidChart="3.1.0"
 
 [libraries]
 accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
@@ -58,6 +59,7 @@ kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+mpandroid-chart = { module = "com.github.PhilJay:MPAndroidChart" , version.ref = "androidChart" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -10,20 +10,12 @@ import com.skydev.openinapp.R
 
 // Set of Material typography styles to start with
 val figtreeFamily = FontFamily(
-    Font(R.font.figtree_italic, FontWeight.Normal),
     Font(R.font.figtree_light, FontWeight.Light),
-    Font(R.font.figtree_light_italic, FontWeight.Light),
     Font(R.font.figtree_medium, FontWeight.Medium),
-    Font(R.font.figtree_medium_italic, FontWeight.Medium),
     Font(R.font.figtree_regular, FontWeight.Normal),
     Font(R.font.figtree_semi_bold, FontWeight.SemiBold),
-    Font(R.font.figtree_semi_bold_italic, FontWeight.SemiBold),
-    Font(R.font.figtree_extra_bold, FontWeight.ExtraBold),
-    Font(R.font.figtree_extra_bold_italic, FontWeight.ExtraBold),
     Font(R.font.figtree_bold, FontWeight.Bold),
-    Font(R.font.figtree_bold_italic, FontWeight.Bold),
-    Font(R.font.figtree_black, FontWeight.Bold),
-    Font(R.font.figtree_black_italic, FontWeight.Bold),
+    Font(R.font.figtree_extra_bold, FontWeight.ExtraBold),
 
     )
 

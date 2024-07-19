@@ -95,7 +95,8 @@ dependencies {
     //Kotlinx Serialization
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.json)
-
+    // android - chart
+    implementation(libs.mpandroid.chart)
 
 
 
