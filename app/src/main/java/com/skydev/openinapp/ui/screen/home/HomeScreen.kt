@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -32,11 +33,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.skydev.openinapp.R
 import com.skydev.openinapp.domain.model.ShortcutData
+import com.skydev.openinapp.ui.common.IconColoredButton
 import com.skydev.openinapp.ui.common.IconLargeButton
 import com.skydev.openinapp.ui.screen.home.component.GreetingHeader
 import com.skydev.openinapp.ui.screen.home.component.OverviewGraph
 import com.skydev.openinapp.ui.screen.home.component.ShortcutRow
+import com.skydev.openinapp.ui.screen.home.component.TabbedList
 import com.skydev.openinapp.ui.theme.blue
+import com.skydev.openinapp.ui.theme.blueSecondary
+import com.skydev.openinapp.ui.theme.green
+import com.skydev.openinapp.ui.theme.greyLight
 import com.skydev.openinapp.ui.theme.greyMid
 import com.skydev.openinapp.ui.theme.purple
 import com.skydev.openinapp.ui.theme.red
@@ -118,14 +124,31 @@ fun HomeScreen(
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.primary)
                 .clip(RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp))
-                .background(greyMid)
+                .background(greyLight)
                 .verticalScroll(rememberScrollState())
         ) {
             GreetingHeader(greeting = greeting)
             OverviewGraph()
             ShortcutRow(shortcuts = shortcuts)
-            IconLargeButton(iconId = R.drawable.ic_arrow , label = "View analytics")
-            IconLargeButton(iconId = R.drawable.ic_links , label = "View all Links")
+            IconLargeButton(iconId = R.drawable.ic_arrow, label = "View analytics")
+            TabbedList(
+                topLinks = dashboard?.data?.topLinks ?: emptyList(),
+                recentLinks = dashboard?.data?.recentLinks ?: emptyList()
+            )
+            IconLargeButton(iconId = R.drawable.ic_links, label = "View all Links")
+            Spacer(modifier = Modifier.padding(12.dp))
+            IconColoredButton(
+                iconId = R.drawable.ic_whatsapp,
+                iconColor = green,
+                label = "Talk with us"
+            )
+            Spacer(modifier = Modifier.padding(8.dp))
+            IconColoredButton(
+                iconId = R.drawable.ic_faq,
+                iconColor = blueSecondary,
+                label = "Frequently Asked Questions"
+            )
+            Spacer(modifier = Modifier.padding(12.dp))
         }
     }
 }

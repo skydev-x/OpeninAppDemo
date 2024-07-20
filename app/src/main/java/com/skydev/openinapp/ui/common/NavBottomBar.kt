@@ -27,7 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.skydev.openinapp.R
-import com.skydev.openinapp.ui.theme.greyMid
+import com.skydev.openinapp.ui.theme.greyLight
 
 @Composable
 fun NavBottomBar(
@@ -44,7 +44,7 @@ fun NavBottomBar(
 
     Box(
         modifier = modifier
-            .background(greyMid)
+            .background(greyLight)
             .fillMaxWidth()
             .height(height)
             .clip(
