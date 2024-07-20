@@ -68,16 +68,16 @@ fun NavBottomBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             BottomBarItem(
-                text = "Streaks",
-                icon = R.drawable.ic_launcher_foreground,
+                text = "Links",
+                icon = R.drawable.ic_links,
                 selectedId = selectedIndex,
                 index = 0
             ) {
                 onNavigate(it)
             }
             BottomBarItem(
-                text = "Flashes",
-                icon = R.drawable.ic_launcher_foreground,
+                text = "Courses",
+                icon = R.drawable.ic_courses,
                 selectedId = selectedIndex,
                 index = 1
             ) {
@@ -85,8 +85,8 @@ fun NavBottomBar(
             }
             Spacer(modifier = Modifier.width(64.dp))
             BottomBarItem(
-                text = "Profile",
-                icon = R.drawable.ic_launcher_foreground,
+                text = "Campaigns",
+                icon = R.drawable.ic_campaign,
                 selectedId = selectedIndex,
                 index = 2
             ) {
@@ -94,7 +94,7 @@ fun NavBottomBar(
             }
             BottomBarItem(
                 text = "Profile",
-                icon = R.drawable.ic_launcher_foreground,
+                icon = R.drawable.ic_profile,
                 selectedId = selectedIndex,
                 index = 3
             ) {

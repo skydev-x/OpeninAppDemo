@@ -1,6 +1,5 @@
 package com.skydev.openinapp.ui.common
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,9 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.skydev.openinapp.ui.theme.greyDark
 
 
 @Composable
@@ -37,42 +37,9 @@ fun BottomBarItem(
         }
     }
 
-    val selectedGrad =
-        Brush.linearGradient(
-            listOf(
-                MaterialTheme.colorScheme.primary,
-                MaterialTheme.colorScheme.secondary
-            )
-        )
-
-    val unSelectedGrad = Brush.linearGradient(
-        listOf(
-            MaterialTheme.colorScheme.secondaryContainer,
-            MaterialTheme.colorScheme.secondaryContainer
-        )
-    )
-
-
-    val backgroundColor = remember(isSelected) {
-        derivedStateOf {
-            if (isSelected) {
-                selectedGrad
-            } else {
-                unSelectedGrad
-            }
-        }
-    }
-
-
-
     Column(
         modifier = modifier
             .size(60.dp)
-            .border(
-                width = 1.dp,
-                brush = backgroundColor.value,
-                shape = MaterialTheme.shapes.small
-            )
             .clip(MaterialTheme.shapes.small)
             .clickable { onClick(index) },
         verticalArrangement = Arrangement.Center,
@@ -82,13 +49,13 @@ fun BottomBarItem(
         Icon(
             painter = painterResource(id = icon),
             contentDescription = null,
-            tint = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSecondary,
-            modifier = Modifier.size(20.dp)
+            tint = if (isSelected) Color.Black else greyDark,
+            modifier = Modifier.size(32.dp)
         )
         Spacer(modifier = Modifier.padding(4.dp))
         Text(
             text = text,
-            style = MaterialTheme.typography.labelSmall.copy(color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSecondary)
+            style = MaterialTheme.typography.displaySmall.copy(color = if (isSelected) Color.Black else greyDark)
         )
     }
 
