@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -19,6 +22,11 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        val prop = Properties().apply {
+            load(FileInputStream(File(rootProject.rootDir, "openin.properties")))
+        }
+        val token = prop.getProperty("token") ?: ""
+        buildConfigField("String", "AUTH_TOKEN", token)
     }
 
     buildTypes {
@@ -39,6 +47,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.7"
@@ -97,6 +106,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     // android - chart
     implementation(libs.mpandroid.chart)
+    implementation(libs.retrofit)
+    implementation(libs.kotlinx.serialization.retrofit)
 
 
 

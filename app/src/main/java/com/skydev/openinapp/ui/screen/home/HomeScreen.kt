@@ -20,7 +20,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,9 +31,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.skydev.openinapp.R
+import com.skydev.openinapp.domain.model.ShortcutData
+import com.skydev.openinapp.ui.common.IconLargeButton
 import com.skydev.openinapp.ui.screen.home.component.GreetingHeader
 import com.skydev.openinapp.ui.screen.home.component.OverviewGraph
+import com.skydev.openinapp.ui.screen.home.component.ShortcutRow
+import com.skydev.openinapp.ui.theme.blue
 import com.skydev.openinapp.ui.theme.greyMid
+import com.skydev.openinapp.ui.theme.purple
+import com.skydev.openinapp.ui.theme.red
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -41,9 +49,35 @@ fun HomeScreen(
 
     LaunchedEffect(Unit) {
         viewModel.initGreeting()
+        viewModel.getDashBoard()
     }
 
     val greeting by viewModel.greeting.collectAsStateWithLifecycle()
+    val dashboard by viewModel.dashboard.collectAsStateWithLifecycle()
+    val shortcuts by remember {
+        derivedStateOf {
+            listOf(
+                ShortcutData(
+                    label = "Today's clicks",
+                    value = dashboard?.todayClicks.toString(),
+                    iconId = R.drawable.ic_clicks,
+                    iconColor = purple
+                ),
+                ShortcutData(
+                    label = "Top Location",
+                    value = dashboard?.topLocation.toString(),
+                    iconId = R.drawable.ic_location,
+                    iconColor = blue
+                ),
+                ShortcutData(
+                    label = "Top source",
+                    value = dashboard?.topSource.toString(),
+                    iconId = R.drawable.ic_source,
+                    iconColor = red
+                ),
+            )
+        }
+    }
 
     Column(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -89,6 +123,9 @@ fun HomeScreen(
         ) {
             GreetingHeader(greeting = greeting)
             OverviewGraph()
+            ShortcutRow(shortcuts = shortcuts)
+            IconLargeButton(iconId = R.drawable.ic_arrow , label = "View analytics")
+            IconLargeButton(iconId = R.drawable.ic_links , label = "View all Links")
         }
     }
 }

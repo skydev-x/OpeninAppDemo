@@ -1,16 +1,22 @@
 package com.skydev.openinapp.ui.screen.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.skydev.openinapp.data.model.DashBoardResponse
+import com.skydev.openinapp.data.repository.DashboardRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalTime
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: DashboardRepo) : ViewModel() {
 
     var greeting = MutableStateFlow("")
         private set
+
+    var dashboard = MutableStateFlow<DashBoardResponse?>(null)
 
     fun initGreeting() {
         fun getGreeting(): String {
@@ -23,7 +29,14 @@ class HomeViewModel : ViewModel() {
             }
         }
         viewModelScope.launch(Dispatchers.Default) {
-           greeting.value = getGreeting()
+            greeting.value = getGreeting()
+        }
+    }
+
+    fun getDashBoard() {
+        viewModelScope.launch(Dispatchers.IO) {
+           dashboard.value = repository.getDashBoard()
+           Log.d("response",dashboard.value.toString())
         }
     }
 

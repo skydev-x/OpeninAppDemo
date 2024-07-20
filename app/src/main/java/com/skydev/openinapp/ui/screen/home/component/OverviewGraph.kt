@@ -29,10 +29,13 @@ fun OverviewGraph(modifier: Modifier = Modifier) {
 
     val data = listOf(
         Pair(0f, 50f),
+        Pair(1f, 50f),
         Pair(2f, 25f),
         Pair(3f, 35f),
         Pair(4f, 60f),
-        Pair(5f, 40f)
+        Pair(5f, 40f),
+        Pair(6f, 70f),
+        Pair(7f, 30f)
     )
 
     Column(

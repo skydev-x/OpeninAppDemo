@@ -22,6 +22,7 @@ lifecycleVersion = "2.8.3"
 lottieCompose = "6.4.0"
 navigationCompose = "2.8.0-beta05"
 androidChart="3.1.0"
+retrofit="2.10.0"
 
 [libraries]
 accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
@@ -60,6 +61,9 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 mpandroid-chart = { module = "com.github.PhilJay:MPAndroidChart" , version.ref = "androidChart" }
+retrofit= { module = "com.squareup.retrofit2:retrofit" , version.ref = "retrofit"  }
+kotlinx-serialization-retrofit = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
